@@ -1096,8 +1096,11 @@ footer {
       Ready to <span class="headline-dot">PROVE IT?</span>
     </h2>
     <p class="cta-sub">Join the waitlist. Be first to download when we launch on iOS and Android.</p>
-    <form class="signup-form" id="signupForm" onsubmit="handleSignup(event)">
-      <input type="email" class="signup-input" placeholder="your@email.com" id="emailInput" required />
+    <form class="signup-form" id="signupForm" action="https://formsubmit.co/studyroomdevs@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Study Room — waitlist signup" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" id="waitlistNext" value="" />
+      <input type="email" name="email" class="signup-input" placeholder="your@email.com" id="emailInput" required autocomplete="email" />
       <button type="submit" class="btn-primary-lg" style="flex-shrink:0;padding:14px 28px;font-size:14px">Join waitlist</button>
     </form>
     <p id="signup-success" style="display:none;margin-top:16px;font-size:14px;color:#FF5C00;font-weight:600">✓ You're on the list. We'll be in touch soon.</p>
@@ -1412,12 +1415,20 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.stat-num[data-target]').forEach(el => counterObserver.observe(el));
 
-// Signup
-function handleSignup(e) {
-  e.preventDefault();
-  document.getElementById('signupForm').style.display = 'none';
-  document.getElementById('signup-success').style.display = 'block';
-}
+// Waitlist: FormSubmit redirect target + thank-you state (no mailto — real POST to inbox)
+(function initWaitlistForm() {
+  const next = document.getElementById('waitlistNext');
+  if (next) {
+    next.value = window.location.origin + window.location.pathname + '?waitlist=thanks#signup';
+  }
+  if (new URLSearchParams(window.location.search).get('waitlist') === 'thanks') {
+    const form = document.getElementById('signupForm');
+    const ok = document.getElementById('signup-success');
+    if (form) form.style.display = 'none';
+    if (ok) ok.style.display = 'block';
+    window.history.replaceState({}, '', window.location.pathname + '#signup');
+  }
+})();
 
 // ─── PILL REPEL EFFECT ────────────────────────────────
 const pills = document.querySelectorAll('.float-pill');
