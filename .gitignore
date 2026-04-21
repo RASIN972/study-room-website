@@ -1,0 +1,7 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+
+# Local/editor artifacts (not linked from the site)
+uploads/

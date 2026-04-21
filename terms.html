@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Terms of Service — Study Room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --orange: #FF5C00;
+  --surface: #131312;
+  --surface-low: #1C1C1B;
+  --surface-high: #2A2A29;
+  --outline: rgba(58,58,57,0.6);
+  --on-surface: #E5E2E0;
+  --on-muted: #94A3B8;
+  --sg: 'Space Grotesk', sans-serif;
+  --inter: 'Inter', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--surface);
+  color: var(--on-surface);
+  font-family: var(--inter);
+  -webkit-font-smoothing: antialiased;
+}
+nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 48px;
+  background: rgba(19,19,18,0.85);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--outline);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--sg); font-weight: 700; font-size: 16px;
+  color: var(--on-surface); text-decoration: none;
+}
+.nav-logo img { width: 28px; height: 28px; border-radius: 7px; }
+.nav-back {
+  font-size: 13px; color: var(--on-muted); text-decoration: none;
+  display: flex; align-items: center; gap: 6px; transition: color 0.2s;
+}
+.nav-back:hover { color: var(--on-surface); }
+.page-hero {
+  padding: 80px 48px 48px;
+  max-width: 800px; margin: 0 auto;
+  border-bottom: 1px solid var(--outline);
+}
+.page-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--orange); margin-bottom: 16px;
+}
+.page-title {
+  font-family: var(--sg); font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700; letter-spacing: -0.025em; line-height: 1.05;
+  margin-bottom: 16px;
+}
+.page-meta { font-size: 13px; color: var(--on-muted); }
+.content {
+  max-width: 800px; margin: 0 auto;
+  padding: 56px 48px 120px;
+}
+.content h2 {
+  font-family: var(--sg); font-size: 20px; font-weight: 600;
+  letter-spacing: -0.01em; margin: 48px 0 14px;
+  padding-top: 48px; border-top: 1px solid var(--outline);
+  color: var(--on-surface);
+}
+.content h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+.content h3 {
+  font-family: var(--sg); font-size: 15px; font-weight: 600;
+  margin: 28px 0 10px; color: var(--on-surface);
+}
+.content p {
+  font-size: 15px; line-height: 1.8; color: var(--on-muted);
+  margin-bottom: 16px; text-wrap: pretty;
+}
+.content ul, .content ol { padding-left: 20px; margin-bottom: 16px; }
+.content li {
+  font-size: 15px; line-height: 1.8; color: var(--on-muted); margin-bottom: 6px;
+}
+.content strong { color: var(--on-surface); font-weight: 500; }
+.content a { color: var(--orange); text-decoration: none; }
+.content a:hover { text-decoration: underline; }
+.highlight-box {
+  background: var(--surface-low);
+  border: 1px solid var(--outline);
+  border-left: 3px solid var(--orange);
+  border-radius: 8px; padding: 20px 24px; margin: 24px 0;
+}
+.highlight-box p { margin: 0; font-size: 14px; }
+.caps { font-size: 13px; line-height: 1.7; color: var(--on-muted); }
+footer {
+  border-top: 1px solid var(--outline);
+  padding: 32px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-logo {
+  font-family: var(--sg); font-size: 13px; font-weight: 700;
+  color: var(--on-surface); text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+}
+.footer-logo img { width: 22px; height: 22px; border-radius: 5px; }
+.footer-copy { font-size: 12px; color: var(--on-muted); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Back to home
+  </a>
+  <a href="/" class="nav-logo">
+    <img src="/assets/icon.png" alt="Study Room" />
+    Study Room
+  </a>
+</nav>
+
+<div class="page-hero">
+  <p class="page-label">Legal</p>
+  <h1 class="page-title">Terms of Service</h1>
+  <p class="page-meta">Last Updated: March 11, 2026 · Effective Date: March 11, 2026</p>
+</div>
+
+<div class="content">
+
+  <h2>1. Agreement to Terms</h2>
+  <p>Welcome to Study Room. These Terms of Service ("Terms") constitute a legally binding agreement between you and Study Room governing your access to and use of the Study Room mobile application and related services.</p>
+  <p>By creating an account, downloading, or using the App, you agree to be bound by these Terms and our <a href="/privacy.html">Privacy Policy</a>. If you do not agree, you must not use the Service.</p>
+
+  <h2>2. Description of Service</h2>
+  <p>Study Room enables users to:</p>
+  <ul>
+    <li>Record timelapse study sessions using the device's front-facing camera</li>
+    <li>Share timelapse videos with small, private accountability groups called "Rooms"</li>
+    <li>Track study statistics including duration, streaks, and total study time</li>
+    <li>React to sessions posted by other Room members using emoji reactions</li>
+    <li>Create and join Rooms — groups of 3 to 25 people for mutual accountability</li>
+  </ul>
+  <div class="highlight-box">
+    <p>Study Room is designed for small-group accountability between people who know each other. It is <strong>not</strong> a public social media platform. Content shared within Rooms is only visible to verified members of those Rooms.</p>
+  </div>
+
+  <h2>3. Eligibility</h2>
+  <p>You must be at least 13 years of age to use the Service. If you are between 13 and 18, you may only use the Service with parental or guardian consent. Automated accounts and bots are prohibited.</p>
+
+  <h2>4. Account Registration and Security</h2>
+  <p>You must create an account via email/password, Google Sign-In, or Apple Sign-In using accurate information. You are responsible for maintaining account confidentiality. Do not share credentials or create more than one account per person.</p>
+  <p>You may delete your account at any time via App settings or by contacting <a href="mailto:studyroomdevs@gmail.com">studyroomdevs@gmail.com</a>. Account deletion is processed within 30 days.</p>
+
+  <h2>5. User Content</h2>
+  <h3>5.1 Your Ownership</h3>
+  <p>You retain ownership of your User Content (timelapse videos, profile info, Room names, subject labels, reactions). By submitting content, you grant us a limited license to store and display it solely for operating the Service. This license terminates when you delete your content or account.</p>
+
+  <h3>5.2 Content Restrictions</h3>
+  <p>Your User Content must NOT:</p>
+  <ul>
+    <li>Contain nudity, sexually explicit content, or pornography</li>
+    <li>Contain graphic violence, hate speech, harassment, or bullying</li>
+    <li>Exploit, abuse, or endanger minors</li>
+    <li>Promote self-harm, suicide, or dangerous behaviors</li>
+    <li>Violate any applicable law or third-party rights</li>
+    <li>Contain spam, malware, or impersonation</li>
+  </ul>
+  <p>We reserve the right to remove any content at our sole discretion. Report violations to <a href="mailto:studyroomdevs@gmail.com">studyroomdevs@gmail.com</a>.</p>
+
+  <h2>6. Camera Usage and Timelapse Recording</h2>
+  <ul>
+    <li>Camera access is only active during study sessions you explicitly start</li>
+    <li>Frames are captured approximately every 10 seconds</li>
+    <li>Frames are stored locally and stitched on-device — no raw frames are uploaded</li>
+    <li>The App does not record audio</li>
+    <li>You may revoke camera permissions at any time via device settings</li>
+    <li>Only the final timelapse (after your review) is uploaded if you choose to share it</li>
+  </ul>
+
+  <h2>7. Rooms</h2>
+  <p>Any registered user may create a Room with a maximum of 25 members. Room content is only visible to verified members. You may leave a Room at any time.</p>
+
+  <h2>8. Reactions and Interactions</h2>
+  <p>You may react to sessions using emoji reactions (🔥 💪 🧠 👏 ⭐). Reactions are intended to encourage and motivate. You agree not to use them as a means of harassment or bullying.</p>
+
+  <h2>9. Prohibited Conduct</h2>
+  <p>You agree NOT to:</p>
+  <ul>
+    <li>Use the Service for illegal purposes</li>
+    <li>Attempt unauthorized access to the Service or others' accounts</li>
+    <li>Reverse engineer or decompile the App</li>
+    <li>Transmit viruses or malicious code</li>
+    <li>Use automated means to access the Service</li>
+    <li>Stalk, harass, or bully other users</li>
+    <li>Create false identities or impersonate others</li>
+    <li>Sell, resell, or transfer access to the Service</li>
+    <li>Circumvent security measures</li>
+  </ul>
+
+  <h2>10. Intellectual Property</h2>
+  <p>The Service, including its design, features, code, graphics, logos, and brand identity, is owned by Study Room and protected by applicable copyright and trademark laws. We grant you a limited, non-exclusive, non-transferable license to use the App on your personal device for personal, non-commercial use.</p>
+
+  <h2>11. Third-Party Services</h2>
+  <p>The Service relies on Supabase, Expo/EAS, Apple Sign-In, Google Sign-In, and (future) RevenueCat. Your use is also subject to their respective terms. The App is distributed via the Apple App Store and Google Play Store, subject to those platforms' terms.</p>
+
+  <h2>12. Subscriptions and Payments</h2>
+  <p>The Service is currently free of charge. We may introduce premium features in the future. Pricing and terms will be clearly communicated before any purchase. We do not directly collect or store payment information.</p>
+
+  <h2>13. Termination</h2>
+  <p>You may stop using the Service and delete your account at any time. We reserve the right to suspend or terminate accounts for violation of these Terms, harmful conduct, or other reasons. Upon termination, your right to access the Service immediately ceases.</p>
+
+  <h2>14. Disclaimers</h2>
+  <p class="caps">THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND. WE DISCLAIM ALL WARRANTIES INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. We do not guarantee that using the Service will improve your study habits or academic performance.</p>
+
+  <h2>15. Limitation of Liability</h2>
+  <p class="caps">TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL STUDY ROOM BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES. OUR TOTAL AGGREGATE LIABILITY SHALL NOT EXCEED THE GREATER OF: (A) THE AMOUNT YOU HAVE PAID TO US IN THE TWELVE MONTHS PRIOR TO THE CLAIM, OR (B) FIFTY UNITED STATES DOLLARS (USD $50.00).</p>
+
+  <h2>16. Indemnification</h2>
+  <p>You agree to indemnify and hold harmless Study Room from claims, liabilities, damages, losses, and expenses arising out of your use of the Service, your User Content, or your violation of these Terms or any applicable law.</p>
+
+  <h2>17. Dispute Resolution</h2>
+  <p>Before any formal legal claim, contact us at <a href="mailto:studyroomdevs@gmail.com">studyroomdevs@gmail.com</a> to attempt informal resolution. These Terms are governed by the laws of the United States. You waive your right to participate in a class action lawsuit.</p>
+
+  <h2>18. Apple-Specific Terms (iOS)</h2>
+  <p>These Terms are between you and Study Room only, not Apple. Study Room is solely responsible for the App. Apple has no obligation to furnish maintenance or support. Apple is a third-party beneficiary of these Terms.</p>
+
+  <h2>19. Google Play-Specific Terms (Android)</h2>
+  <p>Your use is also subject to the Google Play Terms of Service. Study Room, not Google, is solely responsible for the App and any claims arising from your use.</p>
+
+  <h2>20. Push Notifications</h2>
+  <p>With your permission, we may send push notifications about Room activity and session updates. You may opt out at any time through your device or App settings.</p>
+
+  <h2>21. Privacy</h2>
+  <p>Your use of the Service is governed by our <a href="/privacy.html">Privacy Policy</a>. Key highlights: the camera is used only during active sessions; timelapses are stitched on-device; your videos are only visible to Room members you choose; we do not sell your data or record audio.</p>
+
+  <h2>22. Modifications to the Service</h2>
+  <p>We reserve the right to modify, suspend, or discontinue the Service at any time, with or without notice. We shall not be liable for any modification, suspension, or discontinuation.</p>
+
+  <h2>23. General</h2>
+  <ul>
+    <li><strong>Severability:</strong> If any provision is held invalid, the remaining provisions continue in full force.</li>
+    <li><strong>Entire Agreement:</strong> These Terms and Privacy Policy constitute the entire agreement between you and Study Room.</li>
+    <li><strong>Assignment:</strong> You may not assign these Terms without our written consent.</li>
+    <li><strong>Force Majeure:</strong> We are not liable for delays caused by events beyond our reasonable control.</li>
+  </ul>
+
+  <h2>24. Contact Us</h2>
+  <div class="highlight-box">
+    <p><strong>Study Room</strong><br/>Email: <a href="mailto:studyroomdevs@gmail.com">studyroomdevs@gmail.com</a></p>
+  </div>
+
+</div>
+
+<footer>
+  <a href="/" class="footer-logo">
+    <img src="/assets/icon.png" alt="Study Room" />
+    Study Room
+  </a>
+  <span class="footer-copy">© 2026 Study Room. All rights reserved.</span>
+</footer>
+
+</body>
+</html>
