@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Study Room — Your Room Is Watching</title>
+<!-- Waitlist: get a free key at https://web3forms.com (sent to your inbox). Paste it on <form id="signupForm" … data-web3forms-key="…"> -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -1096,13 +1097,11 @@ footer {
       Ready to <span class="headline-dot">PROVE IT?</span>
     </h2>
     <p class="cta-sub">Join the waitlist. Be first to download when we launch on iOS and Android.</p>
-    <form class="signup-form" id="signupForm" action="https://formsubmit.co/studyroomdevs@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="Study Room — waitlist signup" />
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_next" id="waitlistNext" value="" />
+    <form class="signup-form" id="signupForm" data-web3forms-key="">
       <input type="email" name="email" class="signup-input" placeholder="your@email.com" id="emailInput" required autocomplete="email" />
-      <button type="submit" class="btn-primary-lg" style="flex-shrink:0;padding:14px 28px;font-size:14px">Join waitlist</button>
+      <button type="submit" class="btn-primary-lg" id="waitlistSubmitBtn" style="flex-shrink:0;padding:14px 28px;font-size:14px">Join waitlist</button>
     </form>
+    <p id="signup-error" style="display:none;margin-top:12px;font-size:14px;line-height:1.5;color:#EF4444"></p>
     <p id="signup-success" style="display:none;margin-top:16px;font-size:14px;color:#FF5C00;font-weight:600">✓ You're on the list. We'll be in touch soon.</p>
     <p style="margin-top:20px;font-size:12px;color:var(--on-muted)">No spam. Launch notification only.</p>
   </div>
@@ -1415,19 +1414,71 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.stat-num[data-target]').forEach(el => counterObserver.observe(el));
 
-// Waitlist: FormSubmit redirect target + thank-you state (no mailto — real POST to inbox)
+// Waitlist: Web3Forms via fetch (no form action URL with @ — avoids mobile opening Mail)
 (function initWaitlistForm() {
-  const next = document.getElementById('waitlistNext');
-  if (next) {
-    next.value = window.location.origin + window.location.pathname + '?waitlist=thanks#signup';
+  const form = document.getElementById('signupForm');
+  const errEl = document.getElementById('signup-error');
+  const okEl = document.getElementById('signup-success');
+  const btn = document.getElementById('waitlistSubmitBtn');
+  if (!form || !btn) return;
+
+  function showErr(msg) {
+    if (errEl) {
+      errEl.textContent = msg;
+      errEl.style.display = 'block';
+    }
   }
-  if (new URLSearchParams(window.location.search).get('waitlist') === 'thanks') {
-    const form = document.getElementById('signupForm');
-    const ok = document.getElementById('signup-success');
-    if (form) form.style.display = 'none';
-    if (ok) ok.style.display = 'block';
-    window.history.replaceState({}, '', window.location.pathname + '#signup');
+  function hideErr() {
+    if (errEl) errEl.style.display = 'none';
   }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideErr();
+    if (okEl) okEl.style.display = 'none';
+
+    const accessKey = (form.dataset.web3formsKey || '').trim();
+    if (!accessKey) {
+      showErr('Waitlist isn’t configured yet. Add your Web3Forms key: see the HTML comment next to the page title, or ask the site admin.');
+      return;
+    }
+
+    const emailInput = document.getElementById('emailInput');
+    const email = (emailInput && emailInput.value) ? emailInput.value.trim() : '';
+    if (!email) return;
+
+    const label = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: 'Study Room — waitlist signup',
+          email,
+          message: 'New waitlist signup.',
+          botcheck: false,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data.success !== true) {
+        const msg = (data && data.message) || 'Couldn’t join the waitlist. Try again in a moment.';
+        showErr(msg);
+        return;
+      }
+      form.style.display = 'none';
+      if (okEl) okEl.style.display = 'block';
+      form.reset();
+    } catch {
+      showErr('Network error. Check your connection and try again.');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = label;
+    }
+  });
 })();
 
 // ─── PILL REPEL EFFECT ────────────────────────────────
